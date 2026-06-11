@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SafeTrack — Hors ligne</title>
+  <link rel="manifest" href="manifest.json"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #F9F9F9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      color: #161212;
+    }
+    .logo {
+      width: 64px; height: 64px;
+      background: #C8102E;
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .logo svg { width: 36px; height: 36px; fill: white; }
+    h1 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem; }
+    p  { font-size: 0.95rem; color: #555; text-align: center; max-width: 320px; line-height: 1.6; }
+    .btn {
+      margin-top: 2rem;
+      padding: 0.75rem 2rem;
+      background: #C8102E;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .btn:active { opacity: 0.85; }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+  </div>
+  <h1>Vous êtes hors ligne</h1>
+  <p>SafeTrack nécessite une connexion internet pour synchroniser les données avec le serveur Palmary FOOD.</p>
+  <p style="margin-top:0.75rem">Vérifiez votre connexion Wi-Fi ou réseau mobile et réessayez.</p>
+  <button class="btn" onclick="location.reload()">Réessayer</button>
+</body>
+</html>

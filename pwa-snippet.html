@@ -1,0 +1,45 @@
+<!-- ============================================================
+  SAFETRACK PWA — Colle ce bloc dans le <head> de chaque page
+  (sensibilis.html, admin.html, index.html, etc.)
+  ============================================================ -->
+
+<!-- 1. Lien vers le manifest -->
+<link rel="manifest" href="/manifest.json"/>
+
+<!-- 2. Couleur de la barre de statut mobile -->
+<meta name="theme-color" content="#C8102E"/>
+
+<!-- 3. Icône pour "Ajouter à l'écran d'accueil" sur iOS -->
+<link rel="apple-touch-icon" href="/icons/icon-192.png"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<meta name="apple-mobile-web-app-title" content="SafeTrack"/>
+
+<!-- ============================================================
+  Colle ce bloc juste avant </body> dans chaque page
+  ============================================================ -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker
+        .register('/service-worker.js')
+        .then(function (reg) {
+          console.log('[SafeTrack PWA] Service Worker enregistré :', reg.scope);
+
+          /* Détection mise à jour disponible */
+          reg.addEventListener('updatefound', function () {
+            var newWorker = reg.installing;
+            newWorker.addEventListener('statechange', function () {
+              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                /* Optionnel : notifier l'utilisateur qu'une MAJ est dispo */
+                console.log('[SafeTrack PWA] Mise à jour disponible.');
+              }
+            });
+          });
+        })
+        .catch(function (err) {
+          console.warn('[SafeTrack PWA] Enregistrement échoué :', err);
+        });
+    });
+  }
+</script>
